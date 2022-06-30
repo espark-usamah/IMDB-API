@@ -9,9 +9,9 @@
           Name: <span>{{ item.Title }}</span>
         </span>
         <div class="d-flex justify-content-between align-items-center mt-4">
-          <span>
+          <div>
             Year: <span>{{ item.Year }}</span>
-          </span>
+          </div>
           <b-icon icon="star-fill" animation="fade" font-scale="1"></b-icon>
         </div>
       </div>
@@ -57,8 +57,6 @@ export default {
 }
 
 .movie-tag:hover {
-  position: absolute;
-  width: 19rem;
-  height: 29rem;
+  background-color: #84c8dd !important ;
 }
 </style>
