@@ -31,9 +31,6 @@ export default {
   computed: {
     ...mapGetters(["getData"]),
   },
-  methods: {
-    // ...mapActions("set_Data"),
-  },
   mounted() {
     this.$store.dispatch("set_Data");
   },

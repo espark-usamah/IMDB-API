@@ -8,11 +8,15 @@ export default new Vuex.Store({
     token: "apikey 4stOR2L0zBLHU9jjQb2XOB:4P8ces2mJAEQPnd1fD1SEA",
     qry: "all",
     searchbar: false,
+    load: false,
+    movieData: [],
   },
   getters: {
     getData: (state) => state.data,
     getToken: (state) => state.token,
     getSearchBar: (state) => state.searchbar,
+    getMovie: (state) => state.movieData,
+    getLoad: (state) => state.load,
   },
   mutations: {
     SET_DATA(state, payload) {
@@ -25,6 +29,9 @@ export default new Vuex.Store({
       state.qry = payload;
       this.dispatch("set_Data");
     },
+    SET_MOVIE_DATA(state, payload) {
+      state.movieData = payload;
+    },
   },
   actions: {
     set_searchBar({ commit }, payload) {
@@ -33,8 +40,9 @@ export default new Vuex.Store({
     set_qry({ commit }, payload) {
       commit("SET_QRY", payload);
     },
-    async set_Data({ commit, state }) {
-      await fetch(
+    set_Data({ commit, state }) {
+      state.load = true;
+      fetch(
         `https://api.collectapi.com/imdb/imdbSearchByName?query=${state.qry}`,
         {
           method: "GET",
@@ -45,11 +53,27 @@ export default new Vuex.Store({
           },
         }
       )
-        .then((res) => res.text())
-        .then((r) => {
-          r = JSON.parse(r);
-          commit("SET_DATA", r.result);
-        });
+        .then((res) => res.json())
+        .then((data) => {
+          commit("SET_DATA", data.result);
+        })
+        .finally(() => (state.load = false));
+    },
+    fetchMovieData({ commit, state }, id) {
+      state.load = true;
+      fetch(`https://api.collectapi.com/imdb/imdbSearchById?movieId=${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: state.token,
+          redirect: "follow",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          commit("SET_MOVIE_DATA", data.result);
+        })
+        .finally(() => (state.load = false));
     },
   },
   modules: {},
