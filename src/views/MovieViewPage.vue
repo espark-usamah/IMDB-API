@@ -100,18 +100,15 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   name: "movie-view-page",
   computed: {
     ...mapGetters({ data: "getMovie", isLoading: "getLoad" }),
   },
-  methods: {
-    ...mapActions(["fetchMovieData"]),
-  },
   mounted() {
-    this.fetchMovieData(this.$route.params.id);
+    this.$store.dispatch("fetchMovieData", this.$route.params.id);
   },
 };
 </script>
