@@ -151,5 +151,6 @@ export default {
 
 .box {
   text-align: center;
+  color: black;
 }
 </style>

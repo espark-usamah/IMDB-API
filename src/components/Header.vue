@@ -48,9 +48,10 @@ export default {
   top: 0;
   left: 0;
   z-index: 999;
-  -webkit-box-shadow: -2px -1px 37px -7px rgba(57, 138, 106, 1);
-  -moz-box-shadow: -2px -1px 37px -7px rgba(57, 138, 106, 1);
-  box-shadow: -2px -1px 37px -7px rgba(57, 138, 106, 1);
+  background: black !important;
+  -webkit-box-shadow: -2px -1px 37px -7px rgb(122, 122, 122);
+  -moz-box-shadow: -2px -1px 37px -7px rgb(122, 122, 122);
+  box-shadow: -2px -1px 37px -7px rgb(122, 122, 122);
   text-transform: uppercase;
   background-color: #fefffe;
   font-size: 2em;
@@ -60,7 +61,7 @@ export default {
 
 a {
   font-weight: bold;
-  color: #398a6a;
+  color: yellow;
   text-decoration: none;
 }
 .searchInput {

@@ -7,7 +7,7 @@
           :key="i"
           class="col-xs-12 col-sm-12 col-md-2 mb-3"
         >
-          <MovieTag msg="Welcome to Your Vue.js App" :item="row" />
+          <MovieTag :item="row" />
         </div>
       </template>
       <div v-else class="text-center">

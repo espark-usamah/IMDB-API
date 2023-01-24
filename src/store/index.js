@@ -5,8 +5,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     data: [],
-    token: "apikey 4stOR2L0zBLHU9jjQb2XOB:4P8ces2mJAEQPnd1fD1SEA",
-    qry: "all",
+    // token: "apikey 4stOR2L0zBLHU9jjQb2XOB:4P8ces2mJAEQPnd1fD1SEA",
+    token: "apikey 2oCqhYN41xPqpHnKPyyE0N:0HpTC1UYUdBFAuBZDNN2j2",
+    qry: "dragon ball",
     searchbar: false,
     load: false,
     movieData: [],
@@ -26,7 +27,7 @@ export default new Vuex.Store({
       state.searchbar = payload;
     },
     SET_QRY(state, payload) {
-      state.qry = payload;
+      state.qry = payload ? payload : "dragon ball";
       this.dispatch("set_Data");
     },
     SET_MOVIE_DATA(state, payload) {

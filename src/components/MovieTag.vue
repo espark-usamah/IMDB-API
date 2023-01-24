@@ -42,6 +42,7 @@ export default {
       width: 100%;
       height: inherit;
       border-radius: 2rem 0 2rem 0;
+      filter: grayscale(100%);
     }
   }
   .name-eclips {
@@ -57,6 +58,18 @@ export default {
 }
 
 .movie-tag:hover {
+  transform: rotate3d(1, 1, 1, 360deg);
   background-color: #84c8dd !important ;
+  transition-property: transform, background-color;
+  transition-duration: 1s;
+  transition-delay: 0.2s;
+  .tag {
+    img {
+      filter: none;
+      transition-property: filter;
+      transition-duration: 2s;
+      transition-delay: 0.5s;
+    }
+  }
 }
 </style>
